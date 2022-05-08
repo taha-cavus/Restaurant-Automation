@@ -1,3 +1,4 @@
+var mainDOM = document.querySelector("main");
 //main page create
 function mainPageCreate(){
     var mainDOM = document.querySelector("main");
@@ -31,15 +32,18 @@ mainBtnsList[0].addEventListener("click", ()=>{
     clearMainPage()
 })
 mainBtnsList[1].addEventListener("click", ()=>{
-    alert("menus")
+    clearMainPage()
 })
 mainBtnsList[2].addEventListener("click", ()=>{
-    alert("menus")
+    clearMainPage()
 })
 mainBtnsList[3].addEventListener("click", ()=>{
-    alert("menus")
+    clearMainPage()
 })
 
 function clearMainPage(){
-    alert("asdas")
+    mainBtnsList.forEach(element => {
+        mainDOM.removeChild(element)
+    });
 }
+

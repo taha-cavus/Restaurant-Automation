@@ -38,3 +38,16 @@ main{
     font-weight: bolder;
     border: 4px solid #EC255A ;
 }
+/********************************************* MAİN:order  ************************************************/
+.menu-btns{
+    margin: 10px;
+    width: 60%;
+    height: 60px;
+    font-size: 1.3rem;
+    background-color: burlywood;
+    color:red;
+    border-radius: 7px;
+    font-weight: bolder;
+    cursor: pointer;
+    border: 3px solid brown;
+}

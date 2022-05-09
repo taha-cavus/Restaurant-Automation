@@ -30,6 +30,16 @@ var mainBtnsList = mainPageCreate()
 
 mainBtnsList[0].addEventListener("click", ()=>{
     clearMainPage()
+    var menuLists = orderPageCreate()
+    menuLists.forEach(element => {
+        element.addEventListener("click",()=>{
+            alert(element.innerText)
+            menuLists.forEach(element => {
+                mainDOM.remove(element)
+            });
+        })
+    });
+    
 })
 mainBtnsList[1].addEventListener("click", ()=>{
     clearMainPage()
@@ -47,3 +57,81 @@ function clearMainPage(){
     });
 }
 
+//Lists
+var menus = ["Hamburger: 2$","Giant Chicago: 5$","Cheesburger: 2$","Double Burger: 4$","Bacon Cheese Burger: 6$"]
+var orders = [
+    { id: 20055, menu: 'Hambuerger: 2$', drink: "Cola: 1$", sizeDrink: "Big Patato: +1$", sizePatato: "Big Patato", tables: "3", totalPrices: "17$"} ,
+];
+
+//create page of munus 
+function orderPageCreate(){
+    //create menu list
+    var listOfMenus = []
+    menus.forEach(element => {
+        var btn = document.createElement("button")
+        btn.classList.add("menu-btns")
+        btn.textContent = element
+        mainDOM.appendChild(btn)
+        listOfMenus.push(btn);
+    });
+    return listOfMenus
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
++sipariş
+-menüler
+-siparişler[obeject list:secilen menü -içecek/patato ve size-ekstralar -masalar -total fiyat]
+
++menu set
+-menüler
+
++sipariş öde
+-siparişler
+
++past oders
+-old siparişler
+*/

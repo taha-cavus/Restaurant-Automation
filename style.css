@@ -35,7 +35,7 @@ main{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 600px;
+    min-height: 600px;
 }
 .main-buttons{
     width: 250px;
@@ -75,4 +75,26 @@ main h2{
     font-size: 2rem;
     border-radius: 4px;
     cursor: pointer;
+
+}
+/****************************************** MAİN:Pay the Bill  *********************************************/
+.odersList{
+    border: 15px double lightskyblue;
+    margin: 10px;
+    padding: 5px;
+    min-width: 250px;
+}
+.dorow{
+    flex-direction: unset;
+    flex-wrap: wrap;
+}
+.paybtn{
+    width: 100%;
+    height: 40px;
+    background-color: seagreen;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bolder;
+    cursor: pointer;
+    border: red 3px solid;
 }

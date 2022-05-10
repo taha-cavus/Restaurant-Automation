@@ -1,5 +1,6 @@
 var main = "";
 var back = document.querySelector(".back");
+var _orderID = 0;
 //create menu page
 function createMenuPage() {
     createMainSection();
@@ -222,10 +223,27 @@ function createOrderPage() {
 
 
         finishOrderBtn.addEventListener("click", () => {
+            //now add all varaibles to lists
+            _orderID++;
+            var orderObject = {
+                orderID: _orderID,
+                food: _food,
+                drink: _drink,
+                chipsSize: _chipsSize,
+                drinkSize: _drinkSize,
+                ekstras: _ekstras,
+                totalPrice: _totalPrice
+            }
+            activeOrders.push(orderObject)
+
+            //reset to main then back menu
             deleteMainSection()
             createMenuPage();
             back.style.display = "none"
         })
+
+
+
     }
 }
 
@@ -233,18 +251,75 @@ function createOrderPage() {
 function createPayTheBillPage() {
     deleteMainSection()
     createMainSection();
+    back.style.display = "block"
+    main.classList.add("dorow")
+    //bir div al çevrçeve ver. için sipariş id'si başta olmak üzere bilgileri yaz. en altınada öde butonu
+    activeOrders.forEach((element,index) => {
+        var div = document.createElement("div")
+        div.classList.add("odersList")
+
+        var h3id = document.createElement("h3");
+        h3id.textContent = "Order ID: " + element.orderID
+    
+        var h3food = document.createElement("h3");
+        h3food.textContent = element.food
+
+        var h3drink = document.createElement("h3");
+        h3drink.textContent = element.drink
+
+        var h3drinkSize = document.createElement("h3");
+        h3drinkSize.textContent = element.drinkSize
+
+        var h3chipSize = document.createElement("h3");
+        h3chipSize.textContent = element.chipsSize
+
+        var h3extras = document.createElement("h3");
+        h3extras.textContent = element.extras
+
+        var h3totalPrice = document.createElement("h3");
+        h3totalPrice.textContent = "Total Price: " + element.totalPrice + "$"
+
+        var payOrderBtn = document.createElement("button")
+        payOrderBtn.textContent = "Pay the Bill";
+        payOrderBtn.classList.add("paybtn")
+
+        div.appendChild(h3id)
+        div.appendChild(h3food)
+        div.appendChild(h3drink)
+        div.appendChild(h3drinkSize)
+        div.appendChild(h3chipSize)
+        div.appendChild(h3extras)
+        div.appendChild(h3totalPrice)
+        div.appendChild(payOrderBtn)
+        main.appendChild(div)
+
+        payOrderBtn.addEventListener("click",()=>{
+            //tıkladığım buttona ait divdeki "id"yi alıp o id'yi içeren objecti silelim listeden
+            activeOrders.splice(index, 1)
+            console.log(activeOrders)
+            deleteMainSection()
+            createMainSection()
+            createPayTheBillPage()
+        })
+
+        
+    });
+
+
 }
 
 //create set menu page
 function createSetMenusPage() {
     deleteMainSection()
     createMainSection();
+    back.style.display = "block"
 }
 
 //create old order details
 function createOldOrdersPage() {
     deleteMainSection()
     createMainSection();
+    back.style.display = "block"
 }
 
 //delete main section
@@ -258,12 +333,19 @@ function createMainSection() {
 }
 
 
+//back to the menu
+back.addEventListener("click", () => {
+    deleteMainSection()
+    createMenuPage();
+    back.style.display = "none"
+})
+
 
 //ALL LİSTS
 var foodsList = [["kebab: 3$", 3], ["döner: 2$", 2]]
 var drinkList = [["cola: 1$", 1], ["sprite: 1$", 1]]
 var ekstrasList = [["onion rings: 2$", 2], ["cocoa cake: 3$", 3]]
-
+var activeOrders = [];
 
 
 

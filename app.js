@@ -50,6 +50,7 @@ function createMenuPage() {
 function createOrderPage() {
     deleteMainSection()
     createMainSection();
+    back.style.display = "block"
 
 
     //create variables 
@@ -226,7 +227,6 @@ function createOrderPage() {
             back.style.display = "none"
         })
     }
-
 }
 
 //create pay the bill

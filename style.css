@@ -27,7 +27,7 @@ nav h1{
     color: rgb(4, 38, 58);
     font-size: 1.4rem;
     font-weight: bolder;
-    /* display: none; */
+    display: none;
 }
 /********************************************* MAİN  ************************************************/
 main{

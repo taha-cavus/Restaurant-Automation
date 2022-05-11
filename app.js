@@ -69,7 +69,7 @@ function createOrderPage() {
     function dene(){
         deleteMainSection()
         createMainSection();
-        debugger
+         
 
         foodsList.forEach(element => {
             var create = document.createElement("button");
@@ -129,7 +129,11 @@ function createOrderPage() {
         big.classList.add("main-buttons")
         main.appendChild(big);
 
-        document.querySelectorAll("main button").forEach((element, index) => {
+        debugger
+
+        backtoback(main, createDrinks, undefined , _drink)
+
+        document.querySelectorAll("main .main-buttons").forEach((element, index) => {
             element.addEventListener("click", () => {
                 _chipsSize = element.textContent;
                 if (index == 1) {

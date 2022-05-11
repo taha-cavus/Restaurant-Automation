@@ -87,7 +87,7 @@ function createOrderPage() {
                 createDrinks();
             })
         })
-        backtoback(main, tables, dene,)
+        backtoback(main, tables, dene, )
     }
 
     //create menu buttons of foods
@@ -111,6 +111,7 @@ function createOrderPage() {
                 createChipsSize();
             })
         })
+        backtoback(main, dene,"" , _food)
     }
     function createChipsSize() {
         deleteMainSection();

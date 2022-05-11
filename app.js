@@ -424,6 +424,8 @@ function createSetMenusPage() {
         ekstras.classList.add("main-buttons")
         main.appendChild(ekstras)
 
+        backtoback(main,createSetMenusPage,)
+
         function addItem(dom, itemList) {
             dom.addEventListener("click", () => {
                 deleteMainSection()
@@ -481,6 +483,8 @@ function createSetMenusPage() {
         ekstras.classList.add("main-buttons")
         main.appendChild(ekstras)
 
+        backtoback(main,createSetMenusPage,)
+
         function deleteItem(dom, listItems) {
             dom.addEventListener("click", () => {
                 deleteMainSection()
@@ -521,6 +525,8 @@ function createSetMenusPage() {
         ekstras.classList.add("main-buttons")
         main.appendChild(ekstras)
 
+        backtoback(main,createSetMenusPage,)
+
         function setList(dom, listItems) {
             dom.addEventListener("click", () => {
                 deleteMainSection()
@@ -549,6 +555,7 @@ function createSetMenusPage() {
                         enter.textContent = "Enter";
                         enter.classList.add("enter")
                         main.appendChild(enter);
+                        
                         
                         
                         enter.addEventListener("click",()=>{

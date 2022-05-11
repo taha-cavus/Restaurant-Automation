@@ -83,7 +83,7 @@ main h2{
     cursor: pointer;
     margin-top: 30px;
 }
-/* .tables-true{
+.tables-true{
     width: 200px;
     height: 80px;
     margin: 10px;
@@ -97,7 +97,7 @@ main h2{
     background-color: gray;
     color: white;
     cursor: pointer;
-} */
+}
 /****************************************** MAİN:Pay the Bill  *********************************************/
 .odersList{
     border: 15px double lightskyblue;

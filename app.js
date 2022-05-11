@@ -259,14 +259,16 @@ function createOrderPage() {
     function tables(callback){
         deleteMainSection()
         createMainSection();
-
+        main.classList.add("dorow")
         tablesList.forEach(element => {
             var create = document.createElement("button")
             create.textContent = "Masa " + element[0];
             main.appendChild(create);
             if(element[1]){
+                create.classList.add("tables-true")
                 create.disabled = true
             }else{
+                create.classList.add("tables-false")
                 create.disabled = false
             }
             create.addEventListener("click",()=>{

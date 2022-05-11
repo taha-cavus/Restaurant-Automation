@@ -295,6 +295,7 @@ function createPayTheBillPage() {
 
         payOrderBtn.addEventListener("click", () => {
             //tıkladığım buttona ait divdeki "id"yi alıp o id'yi içeren objecti silelim listeden
+            oldOrders.push(activeOrders[index])
             activeOrders.splice(index, 1)
             deleteMainSection()
             createMainSection()
@@ -506,6 +507,44 @@ function createOldOrdersPage() {
     deleteMainSection()
     createMainSection();
     back.style.display = "block"
+
+    main.classList.add("dorow")
+    oldOrders.forEach(element => {
+        var div = document.createElement("div")
+        div.classList.add("odersList")
+
+        var h3id = document.createElement("h3");
+        h3id.textContent = "Order ID: " + element.orderID
+
+        var h3food = document.createElement("h3");
+        h3food.textContent = element.food
+
+        var h3drink = document.createElement("h3");
+        h3drink.textContent = element.drink
+
+        var h3drinkSize = document.createElement("h3");
+        h3drinkSize.textContent = element.drinkSize
+
+        var h3chipSize = document.createElement("h3");
+        h3chipSize.textContent = element.chipsSize
+
+        var h3extras = document.createElement("h3");
+        h3extras.textContent = element.extras
+
+        var h3totalPrice = document.createElement("h3");
+        h3totalPrice.textContent = "Total Price: " + element.totalPrice + "$"
+
+
+        div.appendChild(h3id)
+        div.appendChild(h3food)
+        div.appendChild(h3drink)
+        div.appendChild(h3drinkSize)
+        div.appendChild(h3chipSize)
+        div.appendChild(h3extras)
+        div.appendChild(h3totalPrice)
+        main.appendChild(div)
+    });
+
 }
 
 //delete main section
@@ -532,7 +571,7 @@ var foodsList = [["kebab: 3$", 3], ["döner: 2$", 2]]
 var drinkList = [["cola: 1$", 1], ["sprite: 1$", 1]]
 var ekstrasList = [["onion rings: 2$", 2], ["cocoa cake: 3$", 3]]
 var activeOrders = [];
-
+var oldOrders = [];
 
 
 

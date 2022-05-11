@@ -61,26 +61,34 @@ function createOrderPage() {
     var _drinkSize = "";
     var _chipsSize = "";
     var _ekstras = "";
+    var _table = "";
     var _totalPrice = 0;
 
+    tables(dene)
+
+    function dene(){
+        deleteMainSection()
+        createMainSection();
+        foodsList.forEach(element => {
+            var create = document.createElement("button");
+            create.textContent = element[0];
+            create.classList.add("main-buttons")
+            main.appendChild(create);
+        });
+    
+        //when click food buttons: delete the page and create the new page by assigning the selected menu and price to the variables
+        document.querySelectorAll("main button").forEach((element, index) => {
+            element.addEventListener("click", () => {
+                _food = element.textContent;
+                _totalPrice += foodsList[index][1];
+                //drink section func
+                createDrinks();
+            })
+        })
+    }
 
     //create menu buttons of foods
-    foodsList.forEach(element => {
-        var create = document.createElement("button");
-        create.textContent = element[0];
-        create.classList.add("main-buttons")
-        main.appendChild(create);
-    });
-
-    //when click food buttons: delete the page and create the new page by assigning the selected menu and price to the variables
-    document.querySelectorAll("main button").forEach((element, index) => {
-        element.addEventListener("click", () => {
-            _food = element.textContent;
-            _totalPrice += foodsList[index][1];
-            //drink section func
-            createDrinks();
-        })
-    })
+    
     //create drink section func
     function createDrinks() {
         deleteMainSection();
@@ -190,6 +198,10 @@ function createOrderPage() {
         h1.innerHTML = `Order Details: <br>`
         main.appendChild(h1)
         //h3 Order infos
+        var h3Table = document.createElement("h2");
+        h3Table.textContent = _table
+        main.appendChild(h3Table)
+
         var h3Food = document.createElement("h3");
         h3Food.textContent = _food
         main.appendChild(h3Food)
@@ -232,6 +244,7 @@ function createOrderPage() {
                 chipsSize: _chipsSize,
                 drinkSize: _drinkSize,
                 ekstras: _ekstras,
+                table: _table,
                 totalPrice: _totalPrice
             }
             activeOrders.push(orderObject)
@@ -241,9 +254,28 @@ function createOrderPage() {
             createMenuPage();
             back.style.display = "none"
         })
+    }
 
+    function tables(callback){
+        deleteMainSection()
+        createMainSection();
 
+        tablesList.forEach(element => {
+            var create = document.createElement("button")
+            create.textContent = "Masa " + element[0];
+            main.appendChild(create);
+            if(element[1]){
+                create.disabled = true
+            }else{
+                create.disabled = false
+            }
+            create.addEventListener("click",()=>{
+                element[1] = true;
+                _table = element[0];
 
+                callback();
+            })
+        });
     }
 }
 
@@ -276,6 +308,9 @@ function createPayTheBillPage() {
         var h3extras = document.createElement("h3");
         h3extras.textContent = element.extras
 
+        var h3table = document.createElement("h3");
+        h3table.textContent = "Table-" + element.table 
+
         var h3totalPrice = document.createElement("h3");
         h3totalPrice.textContent = "Total Price: " + element.totalPrice + "$"
 
@@ -289,6 +324,7 @@ function createPayTheBillPage() {
         div.appendChild(h3drinkSize)
         div.appendChild(h3chipSize)
         div.appendChild(h3extras)
+        div.appendChild(h3table)
         div.appendChild(h3totalPrice)
         div.appendChild(payOrderBtn)
         main.appendChild(div)
@@ -296,6 +332,7 @@ function createPayTheBillPage() {
         payOrderBtn.addEventListener("click", () => {
             //tıkladığım buttona ait divdeki "id"yi alıp o id'yi içeren objecti silelim listeden
             oldOrders.push(activeOrders[index])
+            tablesList[element.table-1][1] = false; 
             activeOrders.splice(index, 1)
             deleteMainSection()
             createMainSection()
@@ -565,6 +602,7 @@ var drinkList = [["cola: 1$", 1], ["sprite: 1$", 1]]
 var ekstrasList = [["onion rings: 2$", 2], ["cocoa cake: 3$", 3]]
 var activeOrders = [];
 var oldOrders = [];
+var tablesList = [[1, false],[2, false],[3, false],[4, false],[5, false],[6, false],[7, false],]
 
 
 

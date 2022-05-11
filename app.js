@@ -52,7 +52,7 @@ function createOrderPage() {
     deleteMainSection()
     createMainSection();
     back.style.display = "block"
-    debugger
+     
 
     //create variables 
     //hold them throughout the process. Save to the list when the process is finished.
@@ -313,6 +313,7 @@ function backtoback(dom,func,dene){
     var create = document.createElement("button");
     create.textContent = "Back";
     dom.appendChild(create);
+    create.classList.add("backtoback")
     create.addEventListener("click",()=>{
         func(dene)
     })

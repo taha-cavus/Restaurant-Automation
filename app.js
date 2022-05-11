@@ -290,7 +290,7 @@ function createOrderPage() {
         main.classList.add("dorow")
         tablesList.forEach(element => {
             var create = document.createElement("button")
-            create.textContent = "Masa " + element[0];
+            create.textContent = "Table-" + element[0];
             main.appendChild(create);
             if(element[1]){
                 create.classList.add("tables-true")

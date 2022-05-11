@@ -355,12 +355,12 @@ function createSetMenusPage() {
                 var inpName = document.createElement("input");
                 inpName.setAttribute("type", "text")
                 inpName.setAttribute("placeholder", "Name")
-                inpName.classList.add("inp")
+                inpName.classList.add("set-btns")
                 main.appendChild(inpName)
                 var inpPrice = document.createElement("input");
                 inpPrice.setAttribute("type", "text")
                 inpPrice.setAttribute("placeholder", "Price")
-                inpPrice.classList.add("inp")
+                inpPrice.classList.add("set-btns")
                 main.appendChild(inpPrice)
 
                 var enter = document.createElement("button")
@@ -451,6 +451,7 @@ function createSetMenusPage() {
                 listItems.forEach((element,index) => {
                     var create = document.createElement("button");
                     create.textContent = element[0]
+                    create.classList.add("set-btns")
                     main.appendChild(create)
                     create.addEventListener("click", () => {
                         deleteMainSection()
@@ -459,12 +460,12 @@ function createSetMenusPage() {
                         var inpName = document.createElement("input");
                         inpName.setAttribute("type", "text")
                         inpName.setAttribute("placeholder", "Name")
-                        inpName.classList.add("inp")
+                        inpName.classList.add("set-btns")
                         main.appendChild(inpName)
                         var inpPrice = document.createElement("input");
                         inpPrice.setAttribute("type", "text")
                         inpPrice.setAttribute("placeholder", "Price")
-                        inpPrice.classList.add("inp")
+                        inpPrice.classList.add("set-btns")
                         main.appendChild(inpPrice)
 
                         var enter = document.createElement("button")

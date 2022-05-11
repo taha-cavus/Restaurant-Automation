@@ -109,4 +109,15 @@ main h2{
     color: black;
     background-color: springgreen;
     border-radius: 7px;
+    margin: 4px;
+}
+.enter{
+    width: 70%;
+    height: 100px;
+    background-color: green;
+    color: white;
+    font-size: 3rem;
+    font-weight: bolder;
+    margin: 10px;
+    border-radius: 20px;
 }

@@ -254,13 +254,13 @@ function createPayTheBillPage() {
     back.style.display = "block"
     main.classList.add("dorow")
     //bir div al çevrçeve ver. için sipariş id'si başta olmak üzere bilgileri yaz. en altınada öde butonu
-    activeOrders.forEach((element,index) => {
+    activeOrders.forEach((element, index) => {
         var div = document.createElement("div")
         div.classList.add("odersList")
 
         var h3id = document.createElement("h3");
         h3id.textContent = "Order ID: " + element.orderID
-    
+
         var h3food = document.createElement("h3");
         h3food.textContent = element.food
 
@@ -293,16 +293,15 @@ function createPayTheBillPage() {
         div.appendChild(payOrderBtn)
         main.appendChild(div)
 
-        payOrderBtn.addEventListener("click",()=>{
+        payOrderBtn.addEventListener("click", () => {
             //tıkladığım buttona ait divdeki "id"yi alıp o id'yi içeren objecti silelim listeden
             activeOrders.splice(index, 1)
-            console.log(activeOrders)
             deleteMainSection()
             createMainSection()
             createPayTheBillPage()
         })
 
-        
+
     });
 
 
@@ -313,6 +312,193 @@ function createSetMenusPage() {
     deleteMainSection()
     createMainSection();
     back.style.display = "block"
+
+    //create 3 button: add, set, delete
+    var add = document.createElement("button");
+    add.textContent = "Add"
+    add.classList.add("main-buttons")
+    main.appendChild(add)
+    var set = document.createElement("button");
+    set.textContent = "Set"
+    set.classList.add("main-buttons")
+    main.appendChild(set)
+    var deletemenus = document.createElement("button");
+    deletemenus.textContent = "Delete"
+    deletemenus.classList.add("main-buttons")
+    main.appendChild(deletemenus)
+
+    function deleteitem(list) {
+
+    }
+    function setitem(list) {
+
+    }
+    function additem(list) {
+
+    }
+
+    //add
+    add.addEventListener("click", () => {
+        deleteMainSection()
+        createMainSection();
+        var foods = document.createElement("button");
+        foods.textContent = "Foods"
+        foods.classList.add("main-buttons")
+        main.appendChild(foods)
+        var drinks = document.createElement("button");
+        drinks.textContent = "Drinks"
+        drinks.classList.add("main-buttons")
+        main.appendChild(drinks)
+        var ekstras = document.createElement("button");
+        ekstras.textContent = "Ekstras"
+        ekstras.classList.add("main-buttons")
+        main.appendChild(ekstras)
+
+        function addItem(dom, itemList) {
+            dom.addEventListener("click", () => {
+                deleteMainSection()
+                createMainSection();
+                //input text. value al entera basınca
+                var inpName = document.createElement("input");
+                inpName.setAttribute("type", "text")
+                inpName.setAttribute("placeholder", "Name")
+                inpName.classList.add("inp")
+                main.appendChild(inpName)
+                var inpPrice = document.createElement("input");
+                inpPrice.setAttribute("type", "text")
+                inpPrice.setAttribute("placeholder", "Price")
+                inpPrice.classList.add("inp")
+                main.appendChild(inpPrice)
+
+                var enter = document.createElement("button")
+                enter.textContent = "Enter";
+                enter.classList.add("enter")
+                main.appendChild(enter);
+
+                enter.addEventListener("click", () => {
+                    var list = []
+                    var fix = inpName.value + ": " + inpPrice.value + "$"
+                    list.push(fix)
+                    list.push(parseInt(inpPrice.value))
+                    itemList.push(list);
+                    alert("Eklendi")
+                })
+            })
+        }
+
+
+        addItem(foods, foodsList)
+        addItem(drinks, drinkList)
+        addItem(ekstras, ekstrasList)
+
+
+    })
+
+    //delete
+    deletemenus.addEventListener("click", () => {
+        deleteMainSection()
+        createMainSection();
+        var foods = document.createElement("button");
+        foods.textContent = "Foods"
+        foods.classList.add("main-buttons")
+        main.appendChild(foods)
+        var drinks = document.createElement("button");
+        drinks.textContent = "Drinks"
+        drinks.classList.add("main-buttons")
+        main.appendChild(drinks)
+        var ekstras = document.createElement("button");
+        ekstras.textContent = "Ekstras"
+        ekstras.classList.add("main-buttons")
+        main.appendChild(ekstras)
+
+        function deleteItem(dom, listItems) {
+            dom.addEventListener("click", () => {
+                deleteMainSection()
+                createMainSection();
+                listItems.forEach((element, index) => {
+                    var create = document.createElement("button");
+                    create.textContent = element;
+                    create.classList.add("set-btns")
+                    main.appendChild(create)
+                    create.addEventListener("click", () => {
+                        listItems.splice(index, 1);
+                        deleteMainSection()
+                        createMainSection();
+                        deleteItem(dom, listItems)
+                    })
+                });
+            })
+        }
+        deleteItem(foods, foodsList)
+        deleteItem(drinks, drinkList)
+        deleteItem(ekstras, ekstrasList)
+    })
+
+    //set
+    set.addEventListener("click", () => {
+        deleteMainSection()
+        createMainSection();
+        var foods = document.createElement("button");
+        foods.textContent = "Foods"
+        foods.classList.add("main-buttons")
+        main.appendChild(foods)
+        var drinks = document.createElement("button");
+        drinks.textContent = "Drinks"
+        drinks.classList.add("main-buttons")
+        main.appendChild(drinks)
+        var ekstras = document.createElement("button");
+        ekstras.textContent = "Ekstras"
+        ekstras.classList.add("main-buttons")
+        main.appendChild(ekstras)
+
+        function setList(dom, listItems) {
+            dom.addEventListener("click", () => {
+                deleteMainSection()
+                createMainSection();
+                listItems.forEach((element,index) => {
+                    var create = document.createElement("button");
+                    create.textContent = element[0]
+                    main.appendChild(create)
+                    create.addEventListener("click", () => {
+                        deleteMainSection()
+                        createMainSection();
+
+                        var inpName = document.createElement("input");
+                        inpName.setAttribute("type", "text")
+                        inpName.setAttribute("placeholder", "Name")
+                        inpName.classList.add("inp")
+                        main.appendChild(inpName)
+                        var inpPrice = document.createElement("input");
+                        inpPrice.setAttribute("type", "text")
+                        inpPrice.setAttribute("placeholder", "Price")
+                        inpPrice.classList.add("inp")
+                        main.appendChild(inpPrice)
+
+                        var enter = document.createElement("button")
+                        enter.textContent = "Enter";
+                        enter.classList.add("enter")
+                        main.appendChild(enter);
+                        
+                        
+                        enter.addEventListener("click",()=>{
+                            var list = []
+                            var set = inpName.value + ": " + inpPrice.value +"$"
+                            list.push(set)
+                            list.push(parseInt(inpPrice.value))
+                            listItems[index] = list
+                            alert("Güncellendi")
+                            deleteMainSection()
+                            createMenuPage();
+                        })
+                    })
+                });
+            })
+        }
+
+        setList(foods, foodsList)
+        setList(drinks, drinkList)
+        setList(ekstras, ekstrasList)
+    })
 }
 
 //create old order details

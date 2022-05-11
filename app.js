@@ -52,7 +52,7 @@ function createOrderPage() {
     deleteMainSection()
     createMainSection();
     back.style.display = "block"
-
+    debugger
 
     //create variables 
     //hold them throughout the process. Save to the list when the process is finished.
@@ -62,6 +62,7 @@ function createOrderPage() {
     var _chipsSize = "";
     var _ekstras = "";
     var _table = "";
+    var totalPriceList = [];
     var _totalPrice = 0;
 
     tables(dene)
@@ -82,12 +83,12 @@ function createOrderPage() {
         document.querySelectorAll("main button").forEach((element, index) => {
             element.addEventListener("click", () => {
                 _food = element.textContent;
-                _totalPrice += foodsList[index][1];
+                totalPriceList[0] = foodsList[index][1];
                 //drink section func
                 createDrinks();
             })
         })
-        backtoback(main, tables, dene, )
+        backtoback(main, tables, dene )
     }
 
     //create menu buttons of foods
@@ -105,13 +106,13 @@ function createOrderPage() {
         document.querySelectorAll("main button").forEach((element, index) => {
             element.addEventListener("click", () => {
                 _drink = element.textContent;
-                _totalPrice += drinkList[index][1];
+                totalPriceList[1] = drinkList[index][1];
                 // console.log(element,index)
                 // console.log(``,_totalPrice,_drink )
                 createChipsSize();
             })
         })
-        backtoback(main, dene,"" , _food)
+        backtoback(main, dene,""  )
     }
     function createChipsSize() {
         deleteMainSection();
@@ -129,17 +130,19 @@ function createOrderPage() {
         big.classList.add("main-buttons")
         main.appendChild(big);
 
-        debugger
+        
 
-        backtoback(main, createDrinks, undefined , _drink)
+        backtoback(main, createDrinks, undefined  )
 
         document.querySelectorAll("main .main-buttons").forEach((element, index) => {
             element.addEventListener("click", () => {
                 _chipsSize = element.textContent;
                 if (index == 1) {
-                    _totalPrice += 1;
+                    totalPriceList[2] = 1;
                 } else if (index == 2) {
-                    _totalPrice += 2;
+                    totalPriceList[2] = 2;
+                }else{
+                    totalPriceList[2] = 0;
                 }
                 createDrinkSize()
                 // console.log(element,index)
@@ -165,13 +168,17 @@ function createOrderPage() {
         big.classList.add("main-buttons")
         main.appendChild(big);
 
-        document.querySelectorAll("main button").forEach((element, index) => {
+        backtoback(main, createChipsSize, undefined  )
+
+        document.querySelectorAll("main .main-buttons").forEach((element, index) => {
             element.addEventListener("click", () => {
                 _drinkSize = element.textContent;
                 if (index == 1) {
-                    _totalPrice += 1;
+                    totalPriceList[3] = 1;
                 } else if (index == 2) {
-                    _totalPrice += 2;
+                    totalPriceList[3] = 2;
+                }else{
+                    totalPriceList[3] = 0;
                 }
                 createEkstrasSection()
                 // console.log(element,index)
@@ -189,10 +196,13 @@ function createOrderPage() {
             create.classList.add("main-buttons")
             main.appendChild(create);
         });
-        document.querySelectorAll("main button").forEach((element, index) => {
+
+        backtoback(main, createDrinkSize, undefined  )
+
+        document.querySelectorAll("main .main-buttons").forEach((element, index) => {
             element.addEventListener("click", () => {
                 _ekstras = element.textContent;
-                _totalPrice += ekstrasList[index][1];
+                totalPriceList[4] = ekstrasList[index][1];
                 completeOrder()
 
             })
@@ -201,6 +211,10 @@ function createOrderPage() {
     function completeOrder() {
         deleteMainSection();
         createMainSection();
+
+
+        _totalPrice = totalPriceList.reduce((a,b) => a + b, 0)
+
         //h1 Order Details(inner html's last add <br>)
         var h1 = document.createElement("h1");
         h1.innerHTML = `Order Details: <br>`
@@ -241,7 +255,7 @@ function createOrderPage() {
         finishOrderBtn.textContent = "Complete the Order"
         main.appendChild(finishOrderBtn)
 
-        tablesList[_table -1][1] = _table_station;
+        
 
         finishOrderBtn.addEventListener("click", () => {
             //now add all varaibles to lists
@@ -262,6 +276,7 @@ function createOrderPage() {
             deleteMainSection()
             createMenuPage();
             back.style.display = "none"
+            tablesList[_table -1][1] = _table_station;
         })
     }
 
@@ -294,7 +309,7 @@ function createOrderPage() {
     }
 }
 
-function backtoback(dom,func,dene,rest){
+function backtoback(dom,func,dene){
     var create = document.createElement("button");
     create.textContent = "Back";
     dom.appendChild(create);

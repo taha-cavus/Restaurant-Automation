@@ -328,15 +328,7 @@ function createSetMenusPage() {
     deletemenus.classList.add("main-buttons")
     main.appendChild(deletemenus)
 
-    function deleteitem(list) {
 
-    }
-    function setitem(list) {
-
-    }
-    function additem(list) {
-
-    }
 
     //add
     add.addEventListener("click", () => {

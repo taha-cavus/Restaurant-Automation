@@ -98,3 +98,15 @@ main h2{
     cursor: pointer;
     border: red 3px solid;
 }
+
+/****************************************** MAİN: Set  *********************************************/
+.set-btns{
+    width: 200px;
+    height: 70px;
+    border: 3px salmon solid;
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: black;
+    background-color: springgreen;
+    border-radius: 7px;
+}

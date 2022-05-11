@@ -69,6 +69,8 @@ function createOrderPage() {
     function dene(){
         deleteMainSection()
         createMainSection();
+        debugger
+
         foodsList.forEach(element => {
             var create = document.createElement("button");
             create.textContent = element[0];
@@ -85,6 +87,7 @@ function createOrderPage() {
                 createDrinks();
             })
         })
+        backtoback(main, tables, dene,)
     }
 
     //create menu buttons of foods
@@ -233,6 +236,7 @@ function createOrderPage() {
         finishOrderBtn.textContent = "Complete the Order"
         main.appendChild(finishOrderBtn)
 
+        tablesList[_table -1][1] = _table_station;
 
         finishOrderBtn.addEventListener("click", () => {
             //now add all varaibles to lists
@@ -259,6 +263,10 @@ function createOrderPage() {
     function tables(callback){
         deleteMainSection()
         createMainSection();
+
+        //back butonu oluşturma fonksyonu oluştur her bir adımda. basıldığında bir önceki fonksyona dönsün.parametre olarak gideceği fonksyonu alsın, dom alsın oluşacagı yerin
+
+
         main.classList.add("dorow")
         tablesList.forEach(element => {
             var create = document.createElement("button")
@@ -272,13 +280,22 @@ function createOrderPage() {
                 create.disabled = false
             }
             create.addEventListener("click",()=>{
-                element[1] = true;
                 _table = element[0];
+                _table_station = true;
 
                 callback();
             })
         });
     }
+}
+
+function backtoback(dom,func,dene,rest){
+    var create = document.createElement("button");
+    create.textContent = "Back";
+    dom.appendChild(create);
+    create.addEventListener("click",()=>{
+        func(dene)
+    })
 }
 
 //create pay the bill

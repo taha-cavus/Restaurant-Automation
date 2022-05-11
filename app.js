@@ -199,7 +199,7 @@ function createOrderPage() {
         main.appendChild(h1)
         //h3 Order infos
         var h3Table = document.createElement("h2");
-        h3Table.textContent = _table
+        h3Table.textContent = "Table-"+ _table
         main.appendChild(h3Table)
 
         var h3Food = document.createElement("h3");

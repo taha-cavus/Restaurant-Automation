@@ -563,6 +563,9 @@ function createOldOrdersPage() {
         var h3extras = document.createElement("h3");
         h3extras.textContent = element.extras
 
+        var h3table = document.createElement("h3");
+        h3table.textContent = "Table-" + element.table
+
         var h3totalPrice = document.createElement("h3");
         h3totalPrice.textContent = "Total Price: " + element.totalPrice + "$"
 
@@ -573,6 +576,7 @@ function createOldOrdersPage() {
         div.appendChild(h3drinkSize)
         div.appendChild(h3chipSize)
         div.appendChild(h3extras)
+        div.appendChild(h3table)
         div.appendChild(h3totalPrice)
         main.appendChild(div)
     });
